@@ -6,10 +6,10 @@
   "routes": [
     {
       "src": "/(.*)",
-      "dest": "zomato/vercel-handler.sh"
+      "dest": "project1/vercel-handler.sh"
     }
   ],
   "env": {
-    "DJANGO_SETTINGS_MODULE": "zomato.settings"
+    "DJANGO_SETTINGS_MODULE": "project1.settings"
   }
 }
