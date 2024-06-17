@@ -1,27 +1,15 @@
 {
-    "version": 2,
-    "builds": [
+  "version": 2,
+  "builds": [
+    { "src": "vercel-handler.sh", "use": "@vercel/static-build" }
+  ],
+  "routes": [
     {
-    "src": "zomato/wsgi.py",
-    "use": "@vercel/python",
-    "config": { "maxLambdaSize": "15mb", "runtime": "python3.9" }
-    },
-    {
-    "src": "build_files.sh",
-    "use": "@vercel/static-build",
-    "config": {
-    "distDir": "staticfiles_build"
-     }
+      "src": "/(.*)",
+      "dest": "zomato/vercel-handler.sh"
     }
-    ],
-    "routes": [
-    {
-    "src": "/static/(.*)",
-    "dest": "/static/$1"
-    },
-    {
-    "src": "/(.*)",
-    "dest": "zomato/wsgi.py"
-    }
-    ]
-    }
+  ],
+  "env": {
+    "DJANGO_SETTINGS_MODULE": "zomato.settings"
+  }
+}
